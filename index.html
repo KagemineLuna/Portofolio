@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nama Kamu | Portfolio</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Nama Kamu</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Tentang Saya</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>Ahli Merangkai Kata & Penjinak Kode</h1>
+                <p class="subtitle">Saya membantu brand bercerita dan membangun website yang tidak hanya indah, tapi juga bekerja.</p>
+                <a href="#projects" class="cta-button">Lihat Karya Saya</a>
+            </div>
+        </section>
+
+        <section id="about" class="scroll-animate">
+            <div class="container about-content">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400" alt="Foto Diri Nama Kamu">
+                </div>
+                <div class="about-text">
+                    <h2>Tentang Saya</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Saya percaya bahwa secangkir kopi yang baik dapat menyelesaikan 99% masalah coding.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="scroll-animate">
+            <div class="container">
+                <h2>Proyek Unggulan</h2>
+                <div class="projects-grid">
+                    <div class="project-card scroll-animate">
+                        <img src="https://via.placeholder.com/400x250" alt="Gambar Proyek 1">
+                        <h3>Nama Proyek Keren 1</h3>
+                        <p>Deskripsi singkat tentang proyek ini, teknologi yang digunakan, dan tantangan yang dihadapi seolah-olah itu adalah rintangan di game Mario Bros.</p>
+                        <a href="#" target="_blank">Lihat Proyek &rarr;</a>
+                    </div>
+
+                    <div class="project-card scroll-animate">
+                        <img src="https://via.placeholder.com/400x250" alt="Gambar Proyek 2">
+                        <h3>Nama Proyek Keren 2</h3>
+                        <p>Deskripsi singkat tentang proyek ini, teknologi yang digunakan, dan bagaimana kamu menyelamatkan dunia (atau setidaknya klien) dengan proyek ini.</p>
+                        <a href="#" target="_blank">Lihat Proyek &rarr;</a>
+                    </div>
+
+                    <div class="project-card scroll-animate">
+                        <img src="https://via.placeholder.com/400x250" alt="Gambar Proyek 3">
+                        <h3>Nama Proyek Keren 3</h3>
+                        <p>Deskripsi singkat tentang proyek ini. Mungkin proyek ini yang membuatmu berpikir untuk ganti profesi, tapi akhirnya berhasil dengan gemilang.</p>
+                        <a href="#" target="_blank">Lihat Proyek &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-animate">
+            <div class="container">
+                <h2>Hubungi Saya</h2>
+                <p>Punya ide gila atau sekadar ingin menyapa? Jangan ragu!</p>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Nama Kamu" required>
+                    <input type="email" name="email" placeholder="Email Kamu" required>
+                    <textarea name="message" placeholder="Pesanmu..." rows="5" required></textarea>
+                    <button type="submit" class="cta-button">Kirim Pesan</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/lenaa__yt?igsh=MXdwbWwwN2ptNnQ2bQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Nama Kamu. Dibuat dengan kopi dan sedikit sihir.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
