@@ -11,16 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Notifikasi Palsu untuk Form Kontak ---
     // Ini cuma tampilan depan. Untuk beneran berfungsi, butuh backend.
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Mencegah form mengirim data ke mana-mana
+    //const contactForm = document.getElementById('contact-form');
+   // if (contactForm) {
+        //contactForm.addEventListener('submit', (e) => {
+         //   e.preventDefault(); // Mencegah form mengirim data ke mana-mana
             
             // Anggap saja pesannya terkirim
-            alert("Pesanmu (pura-puranya) sudah terkirim! Terima kasih sudah menghubungi.");
+           // alert("Pesanmu (pura-puranya) sudah terkirim! Terima kasih sudah menghubungi.");
 
             // Membersihkan form setelah 'dikirim'
-            contactForm.reset();
+           // contactForm.reset();
         });
     }
 
@@ -60,4 +60,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScrollAnimation);
 
 });
-  
