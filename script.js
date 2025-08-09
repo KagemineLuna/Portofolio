@@ -3,29 +3,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mengisi Tahun di Footer Secara Otomatis ---
-    // Biar gak usah ganti tahun manual setiap Januari, males kan?
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // --- Notifikasi Palsu untuk Form Kontak ---
-    // Ini cuma tampilan depan. Untuk beneran berfungsi, butuh backend.
-    //const contactForm = document.getElementById('contact-form');
-   // if (contactForm) {
-        //contactForm.addEventListener('submit', (e) => {
-         //   e.preventDefault(); // Mencegah form mengirim data ke mana-mana
-            
-            // Anggap saja pesannya terkirim
-           // alert("Pesanmu (pura-puranya) sudah terkirim! Terima kasih sudah menghubungi.");
-
-            // Membersihkan form setelah 'dikirim'
-           // contactForm.reset();
-        });
-    }
-
     // --- Animasi Elegan Saat Scroll ---
-    // Biar elemen muncul dengan gaya, bukan tiba-tiba nongol.
     const scrollElements = document.querySelectorAll('.scroll-animate');
 
     const elementInView = (el, dividend = 1) => {
@@ -60,3 +43,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScrollAnimation);
 
 });
+            
