@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Ilmiah Canggih</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="display">
+            <div class="history" id="history"></div>
+            <div class="current-operand" id="current-operand">0</div>
+        </div>
+
+        <div class="buttons">
+            <button class="button scientific" data-function="power">xⁿ</button>
+            <button class="button scientific" data-function="root">√</button>
+            <button class="button scientific" data-function="log">log</button>
+            <button class="button scientific" data-function="ln">ln</button>
+            <button class="button scientific" data-function="factorial">x!</button>
+
+            <button class="button scientific" data-function="sin">sin</button>
+            <button class="button scientific" data-function="cos">cos</button>
+            <button class="button scientific" data-function="tan">tan</button>
+            <button class="button scientific" data-constant="e">e</button>
+            <button class="button scientific" data-constant="pi">π</button>
+
+            <button class="button scientific" data-function="mod">Mod</button>
+            <button class="button scientific" data-function="fraction">1/x</button>
+            <button class="button scientific" data-function="exponent">^</button>
+            <button class="button scientific" data-function="abs">|x|</button>
+            <button class="button scientific" data-function="inverse">INV</button>
+
+            <button class="button operator clear" data-action="clear">AC</button>
+            <button class="button operator delete" data-action="delete">DEL</button>
+            <button class="button operator percent" data-operator="%">%</button>
+            <button class="button operator" data-operator="/">÷</button>
+
+            <button class="button number">7</button>
+            <button class="button number">8</button>
+            <button class="button number">9</button>
+            <button class="button operator" data-operator="*">×</button>
+
+            <button class="button number">4</button>
+            <button class="button number">5</button>
+            <button class="button number">6</button>
+            <button class="button operator" data-operator="-">-</button>
+
+            <button class="button number">1</button>
+            <button class="button number">2</button>
+            <button class="button number">3</button>
+            <button class="button operator" data-operator="+">+</button>
+
+            <button class="button number zero">0</button>
+            <button class="button number dot">.</button>
+            <button class="button operator equals" data-action="equals">=</button>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+      </html>
+                                                                 
