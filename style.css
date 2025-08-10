@@ -271,3 +271,32 @@ footer {
         max-width: 250px;
     }
 }
+
+/* --- TAMBAHAN UNTUK FITUR BARU --- */
+
+/* 1. Membuat kursor jadi 'pointer' saat di atas nama di footer */
+#copyright-trigger {
+    cursor: pointer;
+    font-weight: bold; /* Biar sedikit menonjol */
+    user-select: none; /* Biar teks tidak ter-highlight saat diklik cepat */
+}
+
+/* 2. Transisi Halus untuk Ganti Tema */
+body, .project-card, header, .about-text p, .project-card p {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* 3. Resep Warna untuk Dark Mode (AMOLED Theme) */
+body.dark-mode {
+    --background-color: #000000; /* Hitam pekat untuk AMOLED */
+    --card-bg-color: #121212;    /* Abu-abu sangat gelap untuk kartu */
+    --text-color: #e0e0e0;       /* Putih gading agar tidak silau */
+    --header-bg-color: rgba(18, 18, 18, 0.85); /* Header gelap transparan */
+}
+
+/* Penyesuaian kecil untuk teks di dark mode */
+body.dark-mode .hero-content .subtitle,
+body.dark-mode .project-card p {
+    color: #a0a0a0; /* Abu-abu lebih terang */
+    }
+                                 
