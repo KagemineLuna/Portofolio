@@ -81,8 +81,10 @@ body {
     box-sizing: border-box;
 }
 
+/* Bagian krusial yang diubah */
 .keys {
     display: grid;
+    /* Kita pakai 5 kolom karena itu yang paling konsisten */
     grid-template-columns: repeat(5, 1fr);
     gap: 0.75rem;
 }
@@ -104,9 +106,10 @@ body {
 .key.operator:hover { background-color: var(--operator-key-hover-bg); }
 .key.danger { background-color: var(--danger-key-bg); }
 .key.danger:hover { background-color: var(--danger-key-hover-bg); }
-.key.equals { grid-column: span 2; background-color: var(--operator-key-bg); }
+.key.equals { background-color: var(--operator-key-bg); } /* Hapus span 2 di sini, kita atur di HTML */
+.key.equals:hover { background-color: var(--operator-key-hover-bg); }
 
-/* Formula Calculator Styles */
+/* Formula Calculator Styles (Tidak ada perubahan) */
 .formulas-container {
     padding: 1rem;
 }
@@ -198,3 +201,4 @@ body {
         font-size: 1.1rem;
     }
     }
+    
