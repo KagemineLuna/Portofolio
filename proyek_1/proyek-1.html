@@ -3,63 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Ilmiah Canggih</title>
+    <title>Pusat Kalkulator | Proyek Lena</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="calculator-container">
-        <div class="display">
-            <div class="history" id="history"></div>
-            <div class="current-operand" id="current-operand">0</div>
+    <div class="app-container">
+        <nav class="app-nav">
+            <a href="../index.html" class="back-link">&larr; Kembali ke Portofolio</a>
+        </nav>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="scientific">Kalkulator Ilmiah</button>
+            <button class="tab-button" data-tab="formulas">Kalkulator Rumus</button>
         </div>
 
-        <div class="buttons">
-            <button class="button scientific" data-function="power">xⁿ</button>
-            <button class="button scientific" data-function="root">√</button>
-            <button class="button scientific" data-function="log">log</button>
-            <button class="button scientific" data-function="ln">ln</button>
-            <button class="button scientific" data-function="factorial">x!</button>
+        <div class="calculator-container tab-content active" id="scientific">
+            <div class="display">
+                <input type="text" id="scientific-display" readonly placeholder="0">
+            </div>
+            <div class="keys">
+                <button class="key operator" value="deg">deg</button>
+                <button class="key operator" value="rad">rad</button>
+                <button class="key" value="Math.PI">π</button>
+                <button class="key" value="Math.E">e</button>
+                <button class="key danger" value="clear">AC</button>
+                <button class="key operator" value="sin">sin</button>
+                <button class="key operator" value="cos">cos</button>
+                <button class="key operator" value="tan">tan</button>
+                <button class="key" value="^">x<sup>y</sup></button>
+                <button class="key" value="!">n!</button>
+                <button class="key operator" value="log">log</button>
+                <button class="key operator" value="ln">ln</button>
+                <button class="key" value="(">(</button>
+                <button class="key" value=")">)</button>
+                <button class="key operator" value="sqrt">√</button>
+                <button class="key" value="7">7</button>
+                <button class="key" value="8">8</button>
+                <button class="key" value="9">9</button>
+                <button class="key operator" value="/">÷</button>
+                <button class="key operator" value="backspace">C</button>
+                <button class="key" value="4">4</button>
+                <button class="key" value="5">5</button>
+                <button class="key" value="6">6</button>
+                <button class="key operator" value="*">×</button>
+                <button class="key" value="1">1</button>
+                <button class="key" value="2">2</button>
+                <button class="key" value="3">3</button>
+                <button class="key operator" value="-">−</button>
+                <button class="key" value="0">0</button>
+                <button class="key" value=".">.</button>
+                <button class="key operator" value="+">+</button>
+                <button class="key equals" value="=">=</button>
+            </div>
+        </div>
 
-            <button class="button scientific" data-function="sin">sin</button>
-            <button class="button scientific" data-function="cos">cos</button>
-            <button class="button scientific" data-function="tan">tan</button>
-            <button class="button scientific" data-constant="e">e</button>
-            <button class="button scientific" data-constant="pi">π</button>
-
-            <button class="button scientific" data-function="mod">Mod</button>
-            <button class="button scientific" data-function="fraction">1/x</button>
-            <button class="button scientific" data-function="exponent">^</button>
-            <button class="button scientific" data-function="abs">|x|</button>
-            <button class="button scientific" data-function="inverse">INV</button>
-
-            <button class="button operator clear" data-action="clear">AC</button>
-            <button class="button operator delete" data-action="delete">DEL</button>
-            <button class="button operator percent" data-operator="%">%</button>
-            <button class="button operator" data-operator="/">÷</button>
-            <button class="button operator" data-operator="*">×</button>
-
-            <button class="button number">7</button>
-            <button class="button number">8</button>
-            <button class="button number">9</button>
-            <button class="button operator" data-operator="-">-</button>
-            <button class="button operator" data-operator="+">+</button>
-
-            <button class="button number">4</button>
-            <button class="button number">5</button>
-            <button class="button number">6</button>
-            <button class="button number zero">0</button>
-            <button class="button number dot">.</button>
-
-            <button class="button number">1</button>
-            <button class="button number">2</button>
-            <button class="button number">3</button>
-            <button class="button operator equals" data-action="equals" style="grid-column: span 2;">=</button>
+        <div class="formulas-container tab-content" id="formulas">
+            <div class="formula-selector">
+                <label for="formula-choice">Pilih Rumus:</label>
+                <select id="formula-choice">
+                    <option value="">--Pilih--</option>
+                    <optgroup label="Geometri">
+                        <option value="luas_lingkaran">Luas Lingkaran</option>
+                        <option value="keliling_lingkaran">Keliling Lingkaran</option>
+                        <option value="volume_kubus">Volume Kubus</option>
+                        <option value="pythagoras">Teorema Pythagoras</option>
+                    </optgroup>
+                    <optgroup label="Fisika & Teknik">
+                        <option value="hukum_ohm">Hukum Ohm (V=IR)</option>
+                        <option value="kecepatan">Kecepatan (v=s/t)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="formula-inputs"></div>
+            <button id="calculate-formula" class="cta-button" style="display:none;">Hitung</button>
+            <div id="formula-result"></div>
         </div>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
-                </html>
-                
+    </html>
+            
