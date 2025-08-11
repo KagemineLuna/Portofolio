@@ -161,3 +161,40 @@ body {
     font-size: 1.2rem;
     min-height: 2rem;
 }
+
+/* ============================================= */
+/* --- PERATURAN RESPONSIVE UNTUK LAYAR HP --- */
+/* ============================================= */
+
+@media (max-width: 480px) {
+    .app-container {
+        /* Kurangi padding utama agar lebih lega */
+        padding: 1rem;
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+
+    .tabs {
+        /* Perkecil sedikit font di tab agar muat */
+        font-size: 0.9rem;
+    }
+
+    .tab-button {
+        padding: 0.6rem;
+    }
+
+    #scientific-display {
+        /* Perkecil font di layar display agar angka panjang muat */
+        font-size: 2rem;
+    }
+
+    .keys {
+        gap: 0.5rem; /* Kurangi jarak antar tombol */
+    }
+
+    .key {
+        padding: 1rem 0; /* Kurangi tinggi tombol */
+        font-size: 1.1rem;
+    }
+    }
