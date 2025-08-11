@@ -1,115 +1,163 @@
-/* Import font dari Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+:root {
+    --bg-color: #1e1e1e;
+    --display-bg: #2a2a2a;
+    --key-bg: #3c3c3c;
+    --key-hover-bg: #505050;
+    --operator-key-bg: #ff9500;
+    --operator-key-hover-bg: #ffab3e;
+    --danger-key-bg: #ff3b30;
+    --danger-key-hover-bg: #ff6a62;
+    --text-color: #ffffff;
+    --border-color: #444;
+}
 
-/* Pengaturan dasar untuk seluruh halaman */
 body {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     font-family: 'Roboto Mono', monospace;
-    color: white;
-}
-
-/* Container utama kalkulator */
-.calculator-container {
-    display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-template-rows: minmax(120px, auto) repeat(7, 60px); /* Ini dia perbaikan pentingnya! */
-    grid-gap: 10px;
-    padding: 20px;
-    background-color: #242424;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Area layar kalkulator */
-.display {
-    grid-column: 1 / -1;
-    background-color: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    padding: 10px;
-    border-radius: 10px;
-    word-wrap: break-word;
-    word-break: break-all;
-}
-
-.display .history {
-    font-size: 1.2rem;
-    color: #a0a0a0;
-    min-height: 20px;
-}
-
-.display .current-operand {
-    font-size: 2.5rem;
-    color: #ffffff;
-}
-
-/* Styling untuk semua tombol */
-.button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    font-size: 1.5rem;
-    background-color: #444444;
-    color: white;
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.button:hover {
-    background-color: #555555;
-    transform: scale(1.05);
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--display-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.button:active {
-    transform: scale(0.95);
+.app-nav {
+    margin-bottom: 1rem;
+}
+.back-link {
+    color: var(--operator-key-bg);
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
-/* Penyesuaian tombol untuk fungsi ilmiah */
-.button.scientific {
-    background-color: #333333;
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+.tab-button {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background-color: var(--key-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+.tab-button.active {
+    background-color: var(--display-bg);
+    border-bottom-color: var(--operator-key-bg);
+}
+.tab-button:first-child { border-radius: 8px 0 0 8px; }
+.tab-button:last-child { border-radius: 0 8px 8px 0; }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.display {
+    margin-bottom: 1rem;
+}
+#scientific-display {
+    width: 100%;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+}
+
+.key {
+    background-color: var(--key-bg);
+    border: none;
+    border-radius: 8px;
+    padding: 1.25rem 0;
     font-size: 1.2rem;
-    color: #88aaff;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
 }
 
-/* Penyesuaian tombol operator */
-.button.operator {
-    background-color: #ff9500;
-    color: white;
-    font-weight: bold;
+.key:hover { background-color: var(--key-hover-bg); }
+.key.operator { background-color: var(--operator-key-bg); }
+.key.operator:hover { background-color: var(--operator-key-hover-bg); }
+.key.danger { background-color: var(--danger-key-bg); }
+.key.danger:hover { background-color: var(--danger-key-hover-bg); }
+.key.equals { grid-column: span 2; background-color: var(--operator-key-bg); }
+
+/* Formula Calculator Styles */
+.formulas-container {
+    padding: 1rem;
+}
+.formula-selector { margin-bottom: 1rem; }
+.formula-selector label { display: block; margin-bottom: 0.5rem; }
+#formula-choice {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--key-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
 }
 
-.button.operator.clear,
-.button.operator.delete {
-    background-color: #a5a5a5;
-    color: black;
+#formula-inputs .input-group {
+    margin-bottom: 1rem;
+}
+#formula-inputs label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+#formula-inputs input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
-/* Penyesuaian tombol angka */
-.button.number {
-    background-color: #666666;
+.cta-button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--operator-key-bg);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
-/* Penyesuaian untuk tombol 0 agar memanjang */
-.button.zero {
-    grid-column: span 2;
+#formula-result {
+    margin-top: 1.5rem;
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    min-height: 2rem;
 }
-
-/* Penyesuaian untuk tombol sama dengan */
-.button.equals {
-    grid-column: span 2;
-    background-color: #4CAF50;
-}
-
-.button.equals:hover {
-    background-color: #5cb85c;
-  }
