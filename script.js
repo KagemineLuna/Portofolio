@@ -1,14 +1,12 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- MENGISI TAHUN OTOMATIS (Masih sama) ---
+    // --- AUTO YEAR ---
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // --- ANIMASI SCROLL (Masih sama) ---
+    // --- SCROLL ANIMATION ---
     const scrollElements = document.querySelectorAll('.scroll-animate');
     const elementInView = (el, dividend = 1) => {
         const elementTop = el.getBoundingClientRect().top;
@@ -23,67 +21,59 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScrollAnimation();
     window.addEventListener('scroll', handleScrollAnimation);
 
-    // =======================================================
-    // --- FITUR BARU: EASTER EGG DI FOOTER ---
-    // =======================================================
-
+    // --- DARK MODE + EASTER EGG ---
     const copyrightTrigger = document.getElementById('copyright-trigger');
     const body = document.body;
 
-    // --- 1. Logika Ganti Tema (Dark/Light Mode) ---
     const toggleTheme = () => {
-        body.classList.toggle('dark-mode'); // Tambah/hapus class 'dark-mode'
-
-        // Simpan pilihan tema user di browser
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     };
 
-    // Cek saat halaman dimuat, apakah user sebelumnya pakai dark mode?
     if (localStorage.getItem('theme') === 'dark') {
         body.classList.add('dark-mode');
     }
 
-    // --- 2. Logika Klik, Klik-Klik, dan Klik-Klik-Klik ---
     if (copyrightTrigger) {
         let clickCount = 0;
         let clickTimer = null;
 
         copyrightTrigger.addEventListener('click', () => {
             clickCount++;
-
-            // Ini semacam stopwatch. Kalau 600 milidetik gak ada klik lagi, hitungan reset.
             clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 600);
+            clickTimer = setTimeout(() => clickCount = 0, 600);
 
-            // Jika ini adalah klik PERTAMA (dalam rentang waktu 600ms)
             if (clickCount === 1) {
-                // Jalankan fungsi ganti tema
                 toggleTheme();
-                
-                // Beri pesan sesuai tema saat ini
                 if (body.classList.contains('dark-mode')) {
                     alert('Mode Gelap diaktifkan! 🌚 Klik 3x untuk kejutan lain.');
                 } else {
                     alert('Mode Terang kembali! 🌝');
                 }
-
-            // Jika ini adalah klik KETIGA (dalam rentang waktu 600ms)
             } else if (clickCount === 3) {
-                // Reset hitungan biar gak aneh
                 clickCount = 0;
                 clearTimeout(clickTimer);
+                window.location.href = 'secret.html';
+            }
+        });
+    }
 
-                // Pindahkan user ke halaman rahasia!
-                // GANTI 'secret.html' dengan nama file HTML barumu.
-                window.location.href = 'secret.html'; 
+    // --- MUSIC TOGGLE ---
+    const logoTombol = document.querySelector('.logo');
+    const musik = document.getElementById('background-music');
+
+    if (musik) musik.volume = 0.5;
+
+    if (logoTombol && musik) {
+        logoTombol.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            if (musik.paused) {
+                musik.play();
+                logoTombol.classList.add('playing');
+            } else {
+                musik.pause();
+                logoTombol.classList.remove('playing');
             }
         });
     }
 });
-                                                     
