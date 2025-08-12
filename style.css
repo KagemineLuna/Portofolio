@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css (Versi Final Gabungan) */
 
 /* Variabel Warna Global - Ganti warna di sini untuk mengubah tema website! */
 :root {
@@ -26,6 +26,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    /* DIGABUNGKAN: Transisi ditempatkan di sini agar berlaku global */
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .container {
@@ -238,18 +240,6 @@ footer {
     padding: 2rem 0;
 }
 
-/* Animasi saat scroll */
-.scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-animate.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Responsif untuk Mobile */
 @media (max-width: 768px) {
     .hero-content h1 {
@@ -272,31 +262,59 @@ footer {
     }
 }
 
-/* --- TAMBAHAN UNTUK FITUR BARU --- */
+/* ============================================= */
+/* --- FITUR TAMBAHAN & GABUNGAN --- */
+/* ============================================= */
 
-/* 1. Membuat kursor jadi 'pointer' saat di atas nama di footer */
+/* 1. Kursor untuk trigger di footer */
 #copyright-trigger {
     cursor: pointer;
-    font-weight: bold; /* Biar sedikit menonjol */
-    user-select: none; /* Biar teks tidak ter-highlight saat diklik cepat */
+    font-weight: bold;
+    user-select: none;
 }
 
-/* 2. Transisi Halus untuk Ganti Tema */
-body, .project-card, header, .about-text p, .project-card p {
-    transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* 3. Resep Warna untuk Dark Mode (AMOLED Theme) */
+/* 2. Resep Warna untuk Dark Mode (DISEMPURNAKAN) */
 body.dark-mode {
-    --background-color: #000000; /* Hitam pekat untuk AMOLED */
-    --card-bg-color: #121212;    /* Abu-abu sangat gelap untuk kartu */
-    --text-color: #e0e0e0;       /* Putih gading agar tidak silau */
-    --header-bg-color: rgba(18, 18, 18, 0.85); /* Header gelap transparan */
+    /* Mengubah nilai variabel untuk dark mode */
+    --background-color: #121212;
+    --card-bg-color: #1f1f1f;
+    --text-color: #f1f1f1;
+    --header-bg-color: rgba(31, 31, 31, 0.85);
 }
 
-/* Penyesuaian kecil untuk teks di dark mode */
+/* Penyesuaian link dan teks lain di dark mode */
+body.dark-mode a {
+    color: #ffcc00; /* Warna kuning untuk link di dark mode */
+}
 body.dark-mode .hero-content .subtitle,
 body.dark-mode .project-card p {
-    color: #a0a0a0; /* Abu-abu lebih terang */
-    }
-                                 
+    color: #a0a0a0;
+}
+body.dark-mode .logo,
+body.dark-mode nav a:hover {
+    color: #ffcc00; /* Logo dan hover link juga jadi kuning */
+}
+
+
+/* 3. Animasi Logo Saat Musik Berputar (DIGANTI) */
+.logo.playing {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* 4. Animasi Scroll (DIGANTI DENGAN VERSI BARU) */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
