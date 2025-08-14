@@ -146,7 +146,7 @@ main {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .about-text h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -284,7 +284,7 @@ body.dark-mode {
 
 /* Penyesuaian link dan teks lain di dark mode */
 body.dark-mode a {
-    color: #ffcc00; /* Warna kuning untuk link di dark mode */
+    color: #6a11cb; /* Warna kuning untuk link di dark mode */
 }
 body.dark-mode .hero-content .subtitle,
 body.dark-mode .project-card p {
@@ -292,7 +292,7 @@ body.dark-mode .project-card p {
 }
 body.dark-mode .logo,
 body.dark-mode nav a:hover {
-    color: #ffcc00; /* Logo dan hover link juga jadi kuning */
+    color: #6a11cb; /* Logo dan hover link juga jadi kuning */
 }
 
 
