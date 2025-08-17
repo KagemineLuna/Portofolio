@@ -1,79 +1,94 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    // --- AUTO YEAR ---
+document.addEventListener('DOMContentLoaded', function() {
+    // --- LOADING OVERLAY ---
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    // Show loading overlay initially
+    loadingOverlay.classList.add('active');
+    
+    // Hide loading overlay when everything is loaded
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            loadingOverlay.classList.remove('active');
+        }, 500);
+    });
+    
+    // --- AUTO YEAR IN FOOTER ---
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-
-    // --- SCROLL ANIMATION ---
+    
+    // --- MOBILE NAVIGATION ---
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const primaryNav = document.getElementById('primary-navigation');
+    
+    mobileNavToggle.addEventListener('click', function() {
+        const isVisible = primaryNav.getAttribute('data-visible') === 'true';
+        primaryNav.setAttribute('data-visible', !isVisible);
+        mobileNavToggle.setAttribute('aria-expanded', !isVisible);
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#primary-navigation a').forEach(link => {
+        link.addEventListener('click', function() {
+            primaryNav.setAttribute('data-visible', 'false');
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // --- SCROLL ANIMATIONS ---
     const scrollElements = document.querySelectorAll('.scroll-animate');
+    
     const elementInView = (el, dividend = 1) => {
         const elementTop = el.getBoundingClientRect().top;
-        return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
+        return (
+            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
     };
-    const displayScrollElement = (element) => element.classList.add('visible');
+    
+    const displayScrollElement = (element) => {
+        element.classList.add('visible');
+    };
+    
     const handleScrollAnimation = () => {
         scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) displayScrollElement(el);
-        })
-    }
-    handleScrollAnimation();
-    window.addEventListener('scroll', handleScrollAnimation);
-
-    // --- DARK MODE + EASTER EGG ---
-    const copyrightTrigger = document.getElementById('copyright-trigger');
-    const body = document.body;
-
-    const toggleTheme = () => {
-        body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            if (elementInView(el, 1.25)) {
+                displayScrollElement(el);
+            }
+        });
     };
-
-    if (localStorage.getItem('theme') === 'dark') {
-        body.classList.add('dark-mode');
-    }
-
-    if (copyrightTrigger) {
-        let clickCount = 0;
-        let clickTimer = null;
-
-        copyrightTrigger.addEventListener('click', () => {
-            clickCount++;
-            clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => clickCount = 0, 600);
-
-            if (clickCount === 1) {
-                toggleTheme();
-                if (body.classList.contains('dark-mode')) {
-                    alert('Mode Gelap diaktifkan! 🌚 Klik 3x untuk kejutan lain.');
-                } else {
-                    alert('Mode Terang kembali! 🌝');
-                }
-            } else if (clickCount === 3) {
-                clickCount = 0;
-                clearTimeout(clickTimer);
-                window.location.href = 'secret.html';
-            }
-        });
-    }
-
-    // --- MUSIC TOGGLE ---
-    const logoTombol = document.querySelector('.logo');
-    const musik = document.getElementById('background-music');
-
-    if (musik) musik.volume = 0.5;
-
-    if (logoTombol && musik) {
-        logoTombol.addEventListener('click', function(event) {
-            event.preventDefault(); 
-            if (musik.paused) {
-                musik.play();
-                logoTombol.classList.add('playing');
+    
+    // Initialize and add scroll event listener
+    handleScrollAnimation();
+    window.addEventListener('scroll', throttle(handleScrollAnimation, 100));
+    
+    // Throttle function for scroll events
+    function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
             } else {
-                musik.pause();
-                logoTombol.classList.remove('playing');
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
             }
-        });
+        };
     }
-});
+    
+    // --- DARK MODE TOGGLE ---
+    const themeToggle = document.getElementById('copyright-trigger');
+    const body = document.body;
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Check for saved theme preference or use system preference
+    const currentTheme = localStorage.getItem('theme') || 
+                        (prefersDarkScheme.matches ? 'dark' : 'light
