@@ -1,23 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // --- LOADING OVERLAY ---
-    const loadingOverlay = document.getElementById('loading-overlay');
-    
-    // Show loading overlay initially
-    loadingOverlay.classList.add('active');
-    
-    // Hide loading overlay when everything is loaded
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            loadingOverlay.classList.remove('active');
-        }, 500);
-    });
-    
-    // --- AUTO YEAR IN FOOTER ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- AUTO YEAR ---
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-    
+
     // --- MOBILE NAVIGATION ---
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const primaryNav = document.getElementById('primary-navigation');
@@ -33,10 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             primaryNav.setAttribute('data-visible', 'false');
             mobileNavToggle.setAttribute('aria-expanded', 'false');
-        });
-    });
-    
-    // --- SCROLL ANIMATIONS ---
+     });
+     });
+           // --- SCROLL ANIMATIONS ---
     const scrollElements = document.querySelectorAll('.scroll-animate');
     
     const elementInView = (el, dividend = 1) => {
@@ -84,11 +71,86 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // --- DARK MODE TOGGLE ---
-    const themeToggle = document.getElementById('copyright-trigger');
-    const body = document.body;
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// --- DARK MODE TOGGLE ---
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+const applyTheme = (theme) => {
+    body.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+
+    // Get the icon element
+    const icon = themeToggle.querySelector('i');
     
-    // Check for saved theme preference or use system preference
-    const currentTheme = localStorage.getItem('theme') || 
-                        (prefersDarkScheme.matches ? 'dark' : 'light
+    // Check the theme and change the icon
+    if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+};
+
+// Apply the saved theme from localStorage on page load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    applyTheme(savedTheme);
+} else {
+    // Default to light theme if no preference is found
+    applyTheme('light');
+}
+
+// Add the click listener
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.dataset.theme;
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    });
+}
+
+if (copyrightTrigger) {
+    let clickCount = 0;
+    let clickTimer = null;
+
+    copyrightTrigger.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => clickCount = 0, 600);
+
+        if (clickCount === 1) {
+            toggleTheme();
+            // Your alert logic can now check the dataset attribute
+            if (body.dataset.theme === 'dark') {
+                alert('Mode Gelap diaktifkan!');
+            } else {
+                alert('Mode Terang kembali!');
+            }
+        } else if (clickCount === 3) {
+            clickCount = 0;
+            clearTimeout(clickTimer);
+            window.location.href = 'secret.html';
+        }
+    });
+}
+
+// --- MUSIC TOGGLE ---
+const musicToggle = document.getElementById('music-toggle'); // This is the button
+const musik = document.getElementById('background-music');
+
+if (musik) musik.volume = 1;
+
+if (musicToggle && musik) { // Change this line to use musicToggle
+    musicToggle.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        if (musik.paused) {
+            musik.play();
+            musicToggle.classList.add('playing');
+        } else {
+            musik.pause();
+            musicToggle.classList.remove('playing');
+        }
+    });
+  }
+});

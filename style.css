@@ -231,6 +231,7 @@ header .container {
 /* Navigation */
 nav ul {
     display: flex;
+    align-items: center;
     gap: var(--space-lg);
 }
 
@@ -617,7 +618,7 @@ footer {
 }
 
 #music-toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1);
     box-shadow: var(--shadow-lg);
 }
 
@@ -780,4 +781,17 @@ footer {
     .project-card {
         min-width: 0;
     }
-    }
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: var(--text-xl);
+    padding: 0;
+    transition: color var(--transition-fast);
+}
+
+#theme-toggle:hover {
+    color: var(--primary-color);
+}

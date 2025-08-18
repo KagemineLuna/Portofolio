@@ -26,22 +26,28 @@
     <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <header>
-        <div class="container">
-            <a href="#" class="logo">Kagemine Luna</a>
-            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-                <span class="sr-only">Menu</span>
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="primary-navigation">
-                <ul>
-                    <li><a href="#about">Tentang Saya</a></li>
-                    <li><a href="#projects">Proyek</a></li>
-                    <li><a href="#contact">Kontak</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+   <header>
+    <div class="container">
+        <a href="#" class="logo">Kagemine Luna</a>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="sr-only">Menu</span>
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="primary-navigation">
+            <ul>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li>
+                    <button id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
 
     <main id="main-content">
         <section id="hero">
@@ -55,8 +61,8 @@
             </div>
         </section>
 
-        <section id="about" class="scroll-animate">
-            <div class="container about-content">
+        <section id="about">
+            <div class="container about-content scroll-animate">
                 <div class="about-image">
                     <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" 
                          alt="Animasi Kagemine Luna bekerja" 
@@ -82,7 +88,7 @@
             </div>
         </section>
 
-        <section id="projects" class="scroll-animate">
+        <section id="projects">
             <div class="container">
                 <h2>Proyek Unggulan</h2>
                 <p class="section-subtitle">Beberapa karya terbaik yang telah saya selesaikan untuk klien dan proyek pribadi</p>
