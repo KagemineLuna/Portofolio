@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Kagemine Luna - Ahli Merangkai Kata & Penjinak Buaya Digital">
+    <meta name="description" content="Portfolio Kagemine Luna - Ahli Merangkai Kata & Penjinak Buaya Digital. Temukan proyek, studi kasus, dan tulisan saya di bidang web development, desain, dan penulisan konten.">
     
     <title>KagemineLuna | Portfolio</title>
     
-    <!-- Preload critical resources -->
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
     
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to content</a>
 
    <header>
@@ -36,7 +31,9 @@
         <nav id="primary-navigation">
             <ul>
                 <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#combo">Keahlian</a></li>
                 <li><a href="#projects">Proyek</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Kontak</a></li>
                 <li>
                     <button id="theme-toggle" aria-label="Toggle dark mode">
@@ -88,6 +85,60 @@
             </div>
         </section>
 
+        <section id="combo" class="scroll-animate">
+            <div class="container combo-content">
+                <h2>Dimana Kata-Kata Bertemu Kode</h2>
+                <div class="combo-grid">
+                    <div class="combo-item">
+                        <i class="fas fa-pen-nib combo-icon"></i>
+                        <h3>Story-Driven Websites</h3>
+                        <p>Website yang tidak hanya statis, tapi bercerita. Saya merancang pengalaman digital yang menggerakkan emosi dan tindakan.</p>
+                    </div>
+                    <div class="combo-item">
+                        <i class="fas fa-bullseye combo-icon"></i>
+                        <h3>Content-First Design</h3>
+                        <p>Konten adalah raja. Saya memastikan arsitektur website Anda dirancang untuk menonjolkan pesan Anda, bukan sebaliknya.</p>
+                    </div>
+                    <div class="combo-item">
+                        <i class="fas fa-rocket combo-icon"></i>
+                        <h3>SEO & Fungsionalitas</h3>
+                        <p>Website harus berfungsi, bukan hanya indah. Saya mengoptimalkan setiap baris kode dan kata untuk peringkat di mesin pencari.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Apa Kata Mereka?</h2>
+                <p class="section-subtitle">Dengar langsung dari klien dan kolaborator yang puas.</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card scroll-animate">
+                        <p>"Kagemine Luna tidak hanya membangun website kami, tapi juga membantu kami menemukan suara brand kami. Hasilnya luar biasa!"</p>
+                        <div class="client-info">
+                            <img src="https://via.placeholder.com/50" alt="Foto klien" class="client-photo">
+                            <div>
+                                <p class="client-name">— Jane Doe</p>
+                                <p class="client-title">CEO, Tech Innovators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card scroll-animate">
+                        <p>"Keahliannya dalam SEO dan desain membuat website kami langsung menempati peringkat teratas di Google. Sangat direkomendasikan!"</p>
+                        <div class="client-info">
+                            <img src="https://via.placeholder.com/50" alt="Foto klien" class="client-photo">
+                            <div>
+                                <p class="client-name">— John Smith</p>
+                                <p class="client-title">Founder, Global Marketing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="projects">
             <div class="container">
                 <h2>Proyek Unggulan</h2>
@@ -119,7 +170,7 @@
                              width="400"
                              height="250">
                         <div class="project-content">
-                            <h3>Sistem Manajemen E-Commerce (belum jadi)</h3>
+                            <h3>Sistem Manajemen E-Commerce</h3>
                             <p>Dashboard admin untuk toko online dengan fitur manajemen produk, analitik penjualan, dan sistem notifikasi real-time.</p>
                             <div class="project-tech">
                                 <span>React</span>
@@ -137,7 +188,7 @@
                              width="400"
                              height="250">
                         <div class="project-content">
-                            <h3>Template Portfolio Kreatif (belum jadi)</h3>
+                            <h3>Template Portfolio Kreatif</h3>
                             <p>Template portfolio responsif dengan animasi smooth dan desain minimalis yang menonjolkan karya kreatif.</p>
                             <div class="project-tech">
                                 <span>GSAP</span>
@@ -148,21 +199,53 @@
                         </div>
                     </article>
                     
-                    <article class="project-card scroll-animate">
-                        <img src="https://via.placeholder.com/400x250/4a5568/ffffff?text=Blog+Platform" 
-                             alt="Platform Blog Personal" 
+                    <article class="project-card scroll-animate coming-soon">
+                        <div class="coming-soon-badge">Proyek Mendatang</div>
+                        <img src="https://via.placeholder.com/400x250/4a5568/ffffff?text=Proyek+Mendatang" 
+                             alt="Proyek Mendatang" 
                              loading="lazy"
                              width="400"
                              height="250">
                         <div class="project-content">
-                            <h3>Platform Blog Personal (belum jadi)</h3>
+                            <h3>Platform Blog Personal</h3>
                             <p>Sistem manajemen konten untuk penulis dengan editor markdown, pencarian canggih, dan sistem tag yang intuitif.</p>
                             <div class="project-tech">
                                 <span>Next.js</span>
                                 <span>Tailwind CSS</span>
                                 <span>Sanity.io</span>
                             </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 15%;"></div>
+                            </div>
+                            <p class="progress-text">Progres: 15% selesai. Nantikan segera!</p>
                             <a href="#" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <div class="container">
+                <h2>Blog & Sumber Daya</h2>
+                <p class="section-subtitle">Studi kasus, tutorial, dan pemikiran acak saya tentang kata-kata dan kode.</p>
+                
+                <div class="blog-grid">
+                    <article class="blog-post scroll-animate">
+                        <img src="https://via.placeholder.com/400x250?text=Studi+Kasus" alt="Thumbnail studi kasus" loading="lazy">
+                        <div class="post-content">
+                            <h3>Bagaimana Saya Meningkatkan Konversi 30% untuk Startup XYZ</h3>
+                            <p>Sebuah studi kasus mendalam tentang proses desain, penulisan, dan pengembangan untuk mencapai hasil yang terukur.</p>
+                            <a href="#" class="post-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post scroll-animate">
+                        <img src="https://via.placeholder.com/400x250?text=Tutorial" alt="Thumbnail tutorial web design" loading="lazy">
+                        <div class="post-content">
+                            <h3>5 Tips Menulis Konten Web yang Menjual</h3>
+                            <p>Panduan praktis untuk web developer yang ingin kontennya tidak hanya informatif tapi juga efektif.</p>
+                            <a href="#" class="post-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -193,12 +276,16 @@
                         <span class="error-message" aria-live="polite"></span>
                     </div>
                     
-                    <button type="submit" class="cta-button">
-                        <span class="button-text">Kirim Pesan</span>
-                        <span class="button-loader" aria-hidden="true"></span>
-                    </button>
+                    <div class="form-actions">
+    <button type="submit" class="cta-button">
+        <span class="button-text">Mari Menyeduh Ide</span>
+        <span class="button-loader" aria-hidden="true"></span>
+    </button>
+</div>
+
                     <div id="form-status" aria-live="polite"></div>
                 </form>
+                <p style="text-align:center; font-size: 0.9em; color: var(--text-light); margin-top: 1rem;">Saya akan balas dalam 24 jam.</p>
                 
                 <div class="social-links">
                     <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -221,11 +308,10 @@
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> <span id="copyright-trigger" tabindex="0">Kagemine Luna</span>. Dibuat dengan <i class="fas fa-heart" aria-hidden="true"></i> <span class="sr-only">cinta</span> dan sedikit sihir.</p>
-            <p class="footer-note">Portfolio v1.0 - Terakhir diperbarui <time datetime="2023-06-01">Juni 2023</time></p>
+            <p class="footer-note">Portfolio v2.0 - Terakhir diperbarui <time datetime="2023-06-01">Agustus 2025</time></p>
         </div>
     </footer>
 
-    <!-- Background music with controls -->
     <div class="music-controls">
         <button id="music-toggle" aria-label="Toggle background music">
             <i class="fas fa-music"></i>
@@ -237,7 +323,6 @@
         </audio>
     </div>
 
-    <!-- Loading indicator -->
     <div class="loading-overlay" id="loading-overlay">
         <div class="loading-spinner"></div>
     </div>

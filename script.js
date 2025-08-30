@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DARK MODE TOGGLE ---
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const copyrightTrigger = document.getElementById('copyright-trigger'); // <-- FIX #1: Define the variable
+    const copyrightTrigger = document.getElementById('copyright-trigger');
 
     const applyTheme = (theme) => {
         body.dataset.theme = theme;
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // Helper function to toggle theme
-    const toggleTheme = () => { // <-- FIX #2: Define the missing function
+    const toggleTheme = () => {
         const currentTheme = body.dataset.theme;
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         applyTheme(newTheme);
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply the saved theme from localStorage on page load
     const savedTheme = localStorage.getItem('theme');
-    applyTheme(savedTheme || 'light'); // Default to light if nothing is saved
+    applyTheme(savedTheme || 'light');
 
     // Add the click listener for the main theme button
     if (themeToggle) {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickTimer = setTimeout(() => clickCount = 0, 600);
 
             if (clickCount === 1) {
-                toggleTheme(); // Now this function exists!
+                toggleTheme();
                 if (body.dataset.theme === 'dark') {
                     alert('Mode Gelap diaktifkan!');
                 } else {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (clickCount === 3) {
                 clickCount = 0;
                 clearTimeout(clickTimer);
-                window.location.href = 'secret.html'; // This better be good
+                window.location.href = 'secret.html';
             }
         });
     }
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const musik = document.getElementById('background-music');
 
     if (musik) {
-        musik.volume = 0.7; // You might want to lower this for sanity's sake, e.g., 0.2
+        musik.volume = 0.7;
     }
 
     if (musicToggle && musik) {
