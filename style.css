@@ -125,7 +125,7 @@ a {
 /* Container class */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 var(--space-md);
 }
@@ -173,7 +173,8 @@ h1 {
 }
 
 h2 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
+    text-align: center;
 }
 
 h3 {
@@ -206,7 +207,7 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    z-index: 1000;
+    z-index: 1001;
     padding: var(--space-md) 0;
     transition: all var(--transition-normal);
 }
@@ -248,7 +249,7 @@ nav a::after {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 3px;
     background-color: var(--primary-color);
     transition: width var(--transition-fast);
 }
@@ -272,7 +273,7 @@ nav a:hover::after {
 
 /* Main content */
 main {
-    padding-top: 80px; /* Offset for fixed header */
+    padding-top: 65px; /* Offset for fixed header */
 }
 
 /* Sections */
@@ -695,6 +696,13 @@ footer {
 
 [data-theme="dark"] footer {
     border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background-color: var(--card-bg-color); /* This will be a dark gray in dark mode */
+    color: var(--text-color); /* This will be a light color in dark mode */
+    border-color: #444; /* A slightly lighter border for contrast */
 }
 
 /* ============================================= */

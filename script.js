@@ -10,20 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const primaryNav = document.getElementById('primary-navigation');
     
-    mobileNavToggle.addEventListener('click', function() {
-        const isVisible = primaryNav.getAttribute('data-visible') === 'true';
-        primaryNav.setAttribute('data-visible', !isVisible);
-        mobileNavToggle.setAttribute('aria-expanded', !isVisible);
-    });
+    if (mobileNavToggle && primaryNav) {
+        mobileNavToggle.addEventListener('click', function() {
+            const isVisible = primaryNav.getAttribute('data-visible') === 'true';
+            primaryNav.setAttribute('data-visible', !isVisible);
+            mobileNavToggle.setAttribute('aria-expanded', !isVisible);
+        });
+    }
     
     // Close mobile menu when clicking on a link
     document.querySelectorAll('#primary-navigation a').forEach(link => {
         link.addEventListener('click', function() {
-            primaryNav.setAttribute('data-visible', 'false');
-            mobileNavToggle.setAttribute('aria-expanded', 'false');
-     });
-     });
-           // --- SCROLL ANIMATIONS ---
+            if (primaryNav) {
+                primaryNav.setAttribute('data-visible', 'false');
+            }
+            if (mobileNavToggle) {
+                mobileNavToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    // --- SCROLL ANIMATIONS ---
     const scrollElements = document.querySelectorAll('.scroll-animate');
     
     const elementInView = (el, dividend = 1) => {
@@ -44,10 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-    
-    // Initialize and add scroll event listener
-    handleScrollAnimation();
-    window.addEventListener('scroll', throttle(handleScrollAnimation, 100));
     
     // Throttle function for scroll events
     function throttle(func, limit) {
@@ -70,87 +73,90 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     }
+
+    // Initialize and add scroll event listener
+    handleScrollAnimation();
+    window.addEventListener('scroll', throttle(handleScrollAnimation, 100));
     
-// --- DARK MODE TOGGLE ---
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+    // --- DARK MODE TOGGLE ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const copyrightTrigger = document.getElementById('copyright-trigger'); // <-- FIX #1: Define the variable
 
-const applyTheme = (theme) => {
-    body.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
+    const applyTheme = (theme) => {
+        body.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
 
-    // Get the icon element
-    const icon = themeToggle.querySelector('i');
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    };
     
-    // Check the theme and change the icon
-    if (theme === 'dark') {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-};
-
-// Apply the saved theme from localStorage on page load
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    applyTheme(savedTheme);
-} else {
-    // Default to light theme if no preference is found
-    applyTheme('light');
-}
-
-// Add the click listener
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+    // Helper function to toggle theme
+    const toggleTheme = () => { // <-- FIX #2: Define the missing function
         const currentTheme = body.dataset.theme;
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         applyTheme(newTheme);
-    });
-}
+    };
 
-if (copyrightTrigger) {
-    let clickCount = 0;
-    let clickTimer = null;
+    // Apply the saved theme from localStorage on page load
+    const savedTheme = localStorage.getItem('theme');
+    applyTheme(savedTheme || 'light'); // Default to light if nothing is saved
 
-    copyrightTrigger.addEventListener('click', () => {
-        clickCount++;
-        clearTimeout(clickTimer);
-        clickTimer = setTimeout(() => clickCount = 0, 600);
+    // Add the click listener for the main theme button
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    // Add the click listener for the secret copyright trigger
+    if (copyrightTrigger) {
+        let clickCount = 0;
+        let clickTimer = null;
 
-        if (clickCount === 1) {
-            toggleTheme();
-            // Your alert logic can now check the dataset attribute
-            if (body.dataset.theme === 'dark') {
-                alert('Mode Gelap diaktifkan!');
-            } else {
-                alert('Mode Terang kembali!');
-            }
-        } else if (clickCount === 3) {
-            clickCount = 0;
+        copyrightTrigger.addEventListener('click', () => {
+            clickCount++;
             clearTimeout(clickTimer);
-            window.location.href = 'secret.html';
-        }
-    });
-}
+            clickTimer = setTimeout(() => clickCount = 0, 600);
 
-// --- MUSIC TOGGLE ---
-const musicToggle = document.getElementById('music-toggle'); // This is the button
-const musik = document.getElementById('background-music');
+            if (clickCount === 1) {
+                toggleTheme(); // Now this function exists!
+                if (body.dataset.theme === 'dark') {
+                    alert('Mode Gelap diaktifkan!');
+                } else {
+                    alert('Mode Terang kembali!');
+                }
+            } else if (clickCount === 3) {
+                clickCount = 0;
+                clearTimeout(clickTimer);
+                window.location.href = 'secret.html'; // This better be good
+            }
+        });
+    }
 
-if (musik) musik.volume = 1;
+    // --- MUSIC TOGGLE ---
+    const musicToggle = document.getElementById('music-toggle');
+    const musik = document.getElementById('background-music');
 
-if (musicToggle && musik) { // Change this line to use musicToggle
-    musicToggle.addEventListener('click', function(event) {
-        event.preventDefault(); 
-        if (musik.paused) {
-            musik.play();
-            musicToggle.classList.add('playing');
-        } else {
-            musik.pause();
-            musicToggle.classList.remove('playing');
-        }
-    });
-  }
+    if (musik) {
+        musik.volume = 0.7; // You might want to lower this for sanity's sake, e.g., 0.2
+    }
+
+    if (musicToggle && musik) {
+        musicToggle.addEventListener('click', () => {
+            if (musik.paused) {
+                musik.play().catch(error => console.error("Audio play failed:", error));
+                musicToggle.classList.add('playing');
+            } else {
+                musik.pause();
+                musicToggle.classList.remove('playing');
+            }
+        });
+    }
 });
