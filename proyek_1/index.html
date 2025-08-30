@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Kalkulator | Proyek Lena</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="app-nav">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Kembali ke Portofolio
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="scientific">
+                <i class="fas fa-calculator"></i> Kalkulator Ilmiah
+            </button>
+            <button class="tab-button" data-tab="formulas">
+                <i class="fas fa-square-root-alt"></i> Kalkulator Rumus
+            </button>
+        </div>
+
+        <div class="calculator-container tab-content active" id="scientific">
+            <div class="display">
+                <div class="display-history" id="history"></div>
+                <input type="text" id="scientific-display" readonly placeholder="0">
+            </div>
+            <div class="angle-indicator">
+                Mode Sudut: <span id="angle-mode-display">DEG</span>
+            </div>
+            <div class="keys">
+                <button class="key operator" value="deg" aria-label="Degree mode">deg</button>
+                <button class="key operator" value="rad" aria-label="Radian mode">rad</button>
+                <button class="key" value="Math.PI" aria-label="Pi">π</button>
+                <button class="key" value="Math.E" aria-label="Euler's number">e</button>
+                <button class="key danger" value="clear" aria-label="All clear">AC</button>
+                
+                <button class="key" value="sin" aria-label="Sine">sin</button>
+                <button class="key" value="cos" aria-label="Cosine">cos</button>
+                <button class="key" value="tan" aria-label="Tangent">tan</button>
+                <button class="key" value="^" aria-label="Power">x<sup>y</sup></button>
+                <button class="key" value="!" aria-label="Factorial">n!</button>
+                
+                <button class="key" value="log" aria-label="Logarithm base 10">log</button>
+                <button class="key" value="ln" aria-label="Natural logarithm">ln</button>
+                <button class="key" value="(" aria-label="Open parenthesis">(</button>
+                <button class="key" value=")" aria-label="Close parenthesis">)</button>
+                <button class="key" value="sqrt" aria-label="Square root">√</button>
+                
+                <button class="key" value="7" aria-label="Seven">7</button>
+                <button class="key" value="8" aria-label="Eight">8</button>
+                <button class="key" value="9" aria-label="Nine">9</button>
+                <button class="key operator" value="/" aria-label="Divide">÷</button>
+                <button class="key operator" value="backspace" aria-label="Backspace">⌫</button>
+                
+                <button class="key" value="4" aria-label="Four">4</button>
+                <button class="key" value="5" aria-label="Five">5</button>
+                <button class="key" value="6" aria-label="Six">6</button>
+                <button class="key operator" value="*" aria-label="Multiply">×</button>
+                <button class="key operator" value="-" aria-label="Subtract">−</button>
+                
+                <button class="key" value="1" aria-label="One">1</button>
+                <button class="key" value="2" aria-label="Two">2</button>
+                <button class="key" value="3" aria-label="Three">3</button>
+                <button class="key operator" value="+" aria-label="Add">+</button>
+                
+                <button class="key operator" value="." aria-label="Decimal point">.</button>
+                <button class="key" value="0" style="grid-column: span 3;" aria-label="Zero">0</button>
+                <button class="key equals" value="=" style="grid-column: span 2;" aria-label="Equals">=</button>
+            </div>
+        </div>
+
+        <div class="formulas-container tab-content" id="formulas">
+            <div class="formula-selector">
+                <label for="formula-choice">Pilih Rumus:</label>
+                <select id="formula-choice">
+                    <option value="">--Pilih--</option>
+                    <optgroup label="Geometri">
+                        <option value="luas_lingkaran">Luas Lingkaran</option>
+                        <option value="keliling_lingkaran">Keliling Lingkaran</option>
+                        <option value="volume_kubus">Volume Kubus</option>
+                        <option value="pythagoras">Teorema Pythagoras</option>
+                        <option value="luas_segitiga">Luas Segitiga</option>
+                    </optgroup>
+                    <optgroup label="Fisika & Teknik">
+                        <option value="hukum_ohm">Hukum Ohm (V=IR)</option>
+                        <option value="kecepatan">Kecepatan (v=s/t)</option>
+                        <option value="energi_kinetik">Energi Kinetik</option>
+                    </optgroup>
+                    <optgroup label="Matematika">
+                        <option value="persamaan_kuadrat">Persamaan Kuadrat</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="formula-inputs"></div>
+            <button id="calculate-formula" class="cta-button" style="display:none;">
+                <i class="fas fa-calculator"></i> Hitung
+            </button>
+            <div id="formula-result"></div>
+        </div>
+    </div>
+    
+    <script src="js/scientificCalculator.js" type="module"></script>
+    <script src="js/formulaCalculator.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+  </html>
