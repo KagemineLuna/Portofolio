@@ -1,0 +1,31 @@
+/* Light Theme */
+.light-theme {
+    --bg-color: #f5f5f5;
+    --display-bg: #ffffff;
+    --key-bg: #e0e0e0;
+    --key-hover-bg: #d0d0d0;
+    --operator-key-bg: #ff9500;
+    --operator-key-hover-bg: #e68600;
+    --danger-key-bg: #ff3b30;
+    --danger-key-hover-bg: #e6352b;
+    --text-color: #333333;
+    --border-color: #cccccc;
+    --history-color: #666666;
+    --angle-indicator-bg: #e0e0e0;
+}
+
+/* Dark Theme (default) */
+.dark-theme {
+    --bg-color: #1e1e1e;
+    --display-bg: #2a2a2a;
+    --key-bg: #3c3c3c;
+    --key-hover-bg: #505050;
+    --operator-key-bg: #ff9500;
+    --operator-key-hover-bg: #ffab3e;
+    --danger-key-bg: #ff3b30;
+    --danger-key-hover-bg: #ff6a62;
+    --text-color: #ffffff;
+    --border-color: #444;
+    --history-color: #aaaaaa;
+    --angle-indicator-bg: #333;
+}
