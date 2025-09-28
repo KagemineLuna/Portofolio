@@ -1,6 +1,6 @@
 [build]
   # Assuming your frontend build output goes to a 'build' or 'dist' folder
-  publish = "proyek_2/ecommerce-app/client/public" 
+  publish = "index.html" 
   # Path to your functions folder (must be outside the publish directory)
   functions = "proyek_2/ecommerce-app/netlify/functions" 
 
